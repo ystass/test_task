@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "rest_framework",
+    "django_filters",
+    "drf_yasg",
+
+    "users",
+    "Affairs",
 ]
 
 MIDDLEWARE = [
@@ -69,14 +76,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
+REST_FRAMEWORK = {
+     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+}
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "TestTask",
+        "USER": "postgres",
+        "PASSWORD": "qwerty",
+        "HOST": "localhost",
+        "PORT": 5432,
     }
 }
 
